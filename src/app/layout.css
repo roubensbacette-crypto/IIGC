@@ -1,0 +1,36 @@
+/* Layout-specific styles */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigation styles */
+nav {
+  backdrop-filter: blur(10px);
+}
+
+/* Main content container */
+main {
+  width: 100%;
+}
+
+/* Smooth page transitions */
+@keyframes pageTransition {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  animation: pageTransition 0.3s ease-out;
+}
