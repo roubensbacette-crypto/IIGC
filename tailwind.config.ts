@@ -77,6 +77,14 @@ const config: Config = {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
         },
+        'shimmer': {
+          '0%': { backgroundPosition: '-1000px 0' },
+          '100%': { backgroundPosition: '1000px 0' },
+        },
+        'bounce-slow': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
       },
       animation: {
         'fade-in': 'fade-in 0.5s ease-out',
@@ -85,6 +93,8 @@ const config: Config = {
         'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
         'float': 'float 3s ease-in-out infinite',
         'spin-slow': 'spin-slow 8s linear infinite',
+        'shimmer': 'shimmer 2s infinite',
+        'bounce-slow': 'bounce-slow 2s ease-in-out infinite',
       },
       boxShadow: {
         'glow': '0 0 20px rgba(6, 182, 212, 0.5)',
