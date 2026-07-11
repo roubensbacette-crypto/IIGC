@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IINTEKKU Group — Management, logistics, medical courier, and operations support for government and commercial clients." />
+  <title>IINTEKKU Group | Management • Logistics • Medical Courier</title>
+
+  <style>
+    :root{
+      --bg:#0d1e36;
+      --panel:#102743;
+      --primary:#1d3a59;
+      --accent:#ffc107;
+      --highlight:#ffa733;
+      --text:#ffffff;
+      --muted: rgba(255,255,255,.75);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 1120px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: radial-gradient(1200px 700px at 20% 10%, rgba(255,193,7,.12), transparent 55%),
+                  radial-gradient(900px 600px at 85% 25%, rgba(81,155,230,.12), transparent 50%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:var(--highlight);text-decoration:none;font-weight:700}
+    a:hover{text-decoration:underline}
+
+    /* Layout helpers */
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    .section{padding:90px 0}
+    .badge{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 12px;border:1px solid var(--border);
+      border-radius:999px;color:var(--muted);background:rgba(255,255,255,.04)
+    }
+    .grid{display:grid;gap:18px}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 16px;border-radius:12px;border:1px solid var(--border);
+      background:rgba(255,255,255,.06);color:var(--text);font-weight:800;
+      transition:transform .15s ease, background .2s ease, border-color .2s ease;
+      cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22);text-decoration:none}
+    .btn.primary{
+      background:var(--highlight);
+      border-color: rgba(0,0,0,.0);
+      color:#0b1930;
+    }
+    .btn.primary:hover{background:#ff8f21}
+
+    /* Nav */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:1000;
+      backdrop-filter: blur(10px);
+      background: rgba(29,58,89,.70);
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .nav-inner{
+      max-width:var(--max);margin:0 auto;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:12px 20px;gap:14px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;font-weight:900;
+      letter-spacing:.6px;
+    }
+    .brand .logo{
+      width:34px;height:34px;border-radius:10px;
+      background: linear-gradient(135deg, var(--accent), var(--highlight));
+      box-shadow: 0 10px 20px rgba(255,167,51,.18);
+    }
+    .nav-links{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
+    .nav-links a{
+      color:var(--text);font-weight:800;
+      padding:8px 10px;border-radius:10px;
+      transition:background .2s ease, color .2s ease;
+    }
+    .nav-links a:hover{background: rgba(255,255,255,.08);color: var(--highlight);text-decoration:none}
+
+    /* Hero */
+    header{
+      padding-top:78px; /* offset fixed nav */
+      min-height: 92vh;
+      display:flex;align-items:center;
+    }
+    .hero{
+      display:grid;grid-template-columns: 1.2fr .8fr;
+      gap:22px;align-items:center;
+      padding:28px 0;
+    }
+    .hero h1{font-size: clamp(2.2rem, 4vw, 3.4rem);line-height:1.12}
+    .hero p{color:var(--muted);margin-top:14px;font-size:1.05rem}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .hero-panel{
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      background: rgba(16,39,67,.70);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    .hero-panel h3{font-size:1.05rem;margin-bottom:10px}
+    .stat{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:10px 0;border-top:1px solid var(--border);
+      color:var(--muted)
+    }
+    .stat strong{color:var(--text)}
+
+    /* Section titles */
+    .kicker{color:var(--highlight);font-weight:900;letter-spacing:.8px;text-transform:uppercase;font-size:.85rem}
+    h2{font-size: clamp(1.6rem, 2.5vw, 2.2rem);margin-top:10px}
+    .lead{color:var(--muted);margin-top:10px;max-width: 75ch}
+
+    /* Services */
+    .services{grid-template-columns: repeat(3, minmax(0, 1fr))}
+    .service-card h3{font-size:1.2rem;margin-bottom:8px}
+    .service-card p{color:var(--muted)}
+    .service-card ul{margin-top:12px;padding-left:18px;color:var(--muted)}
+    .service-card li{margin:6px 0}
+
+    /* Capability blocks */
+    .two-col{display:grid;grid-template-columns: 1fr 1fr;gap:18px;align-items:start}
+    .pill-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .pill{
+      padding:8px 12px;border-radius:999px;border:1px solid var(--border);
+      background:rgba(255,255,255,.04);color:var(--muted);font-weight:800;font-size:.92rem
+    }
+
+    /* Past performance */
+    .pp{grid-template-columns: repeat(3, minmax(0, 1fr))}
+    .pp h3{font-size:1.05rem;margin-bottom:8px}
+    .pp p{color:var(--muted)}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      outline:none;
+    }
+    input::placeholder, textarea::placeholder{color: rgba(255,255,255,.55)}
+    textarea{min-height:130px;resize:vertical}
+
+    footer{
+      border-top:1px solid rgba(255,255,255,.12);
+      padding:34px 0;color:var(--muted)
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero{grid-template-columns: 1fr}
+      .services{grid-template-columns: 1fr}
+      .two-col{grid-template-columns: 1fr}
+      .pp{grid-template-columns: 1fr}
+      .nav-links{gap:8px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="brand" aria-label="IINTEKKU Group">
+        <div class="logo" aria-hidden="true"></div>
+        <span>IINTEKKU Group</span>
+      </div>
+      <div class="nav-links" role="navigation" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#past-performance">Past Performance</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="container">
+      <div class="hero">
+        <div>
+          <div class="badge">Government & Commercial Support • Logistics • Operations</div>
+          <h1>Innovative management solutions that keep missions moving.</h1>
+          <p>
+            IINTEKKU Group delivers dependable management, logistics, medical courier, and operational support services
+            with a focus on compliance, responsiveness, and measurable performance.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#contact">Request a Quote / Capability Call</a>
+            <a class="btn" href="#services">Explore Services</a>
+            <!-- Replace href with your real file when you have it -->
+            <a class="btn" href="#" onclick="alert('Add your Capability Statement PDF link here.'); return false;">Download Capability Statement (PDF)</a>
+          </div>
+          <p class="lead" style="margin-top:14px;">
+            Built to support federal contracting workflows (RFIs, sources sought, IDIQs, task orders) and fast-turn operations.
+          </p>
+        </div>
+
+        <div class="hero-panel">
+          <h3>Quick Facts</h3>
+          <div class="stat"><span>Core Focus</span><strong>Operations & Logistics</strong></div>
+          <div class="stat"><span>Service Model</span><strong>On-demand & Scheduled</strong></div>
+          <div class="stat"><span>Compliance Mindset</span><strong>Safety • QA • Documentation</strong></div>
+          <div class="stat"><span>Response Time</span><strong>Rapid Dispatch</strong></div>
+          <div class="pill-row">
+            <span class="pill">Management</span>
+            <span class="pill">Medical Courier</span>
+            <span class="pill">Delivery</span>
+            <span class="pill">Facility Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="kicker">About</div>
+      <h2>About IINTEKKU Group</h2>
+      <p class="lead">
+        We support mission-driven organizations with structured project management, dependable logistics,
+        and operational execution. Our approach is simple: plan clearly, deliver consistently, document everything.
+      </p>
+
+      <div class="two-col" style="margin-top:18px;">
+        <div class="card">
+          <h3>What we do</h3>
+          <p style="color:var(--muted);margin-top:8px;">
+            We provide management oversight, logistics coordination, medical courier services, and operational support
+            designed for government and commercial requirements.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Planning & Scheduling</span>
+            <span class="pill">Dispatch & Routing</span>
+            <span class="pill">QA Documentation</span>
+            <span class="pill">Customer Support</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Why clients choose us</h3>
+          <ul style="margin-top:10px;padding-left:18px;color:var(--muted);">
+            <li>Clear communication and on-time execution</li>
+            <li>Compliance-first operations (checklists, logs, reporting)</li>
+            <li>Flexible staffing and scalable delivery support</li>
+            <li>Professional documentation aligned to contract needs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="kicker">Services</div>
+      <h2>Core Service Areas</h2>
+      <p class="lead">Pick what you need now, and we can scale into broader support as your requirement grows.</p>
+
+      <div class="grid services" style="margin-top:18px;">
+        <div class="card service-card">
+          <h3>Management & Admin Support</h3>
+          <p>Structured coordination for projects, programs, and contract support activities.</p>
+          <ul>
+            <li>Project management & reporting</li>
+            <li>Scheduling, tracking, documentation</li>
+            <li>Vendor coordination & compliance support</li>
+          </ul>
+        </div>
+
+        <div class="card service-card">
+          <h3>Logistics & Delivery Support</h3>
+          <p>Reliable transport, delivery, and route-based support for time-sensitive operations.</p>
+          <ul>
+            <li>Local & regional deliveries</li>
+            <li>Pick-up / drop-off coordination</li>
+            <li>Chain-of-custody documentation</li>
+          </ul>
+        </div>
+
+        <div class="card service-card">
+          <h3>Medical Courier Services</h3>
+          <p>Secure handling and delivery aligned with patient safety and documentation needs.</p>
+          <ul>
+            <li>Specimen & lab deliveries</li>
+            <li>Medical supplies & equipment runs</li>
+            <li>Proof-of-delivery and status updates</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section id="capabilities" class="section">
+    <div class="container">
+      <div class="kicker">Capabilities</div>
+      <h2>Capabilities Snapshot (GovCon-ready)</h2>
+      <p class="lead">
+        This section mirrors what contracting officers and primes look for: scope clarity, differentiators,
+        and codes. Replace placeholders with your exact NAICS/PSC list.
+      </p>
+
+      <div class="two-col" style="margin-top:18px;">
+        <div class="card">
+          <h3>Differentiators</h3>
+          <ul style="margin-top:10px;padding-left:18px;color:var(--muted);">
+            <li>Rapid dispatch and reliable delivery execution</li>
+            <li>Documentation-first operations (logs, checklists, reporting)</li>
+            <li>Flexible staffing & scalable coverage for surge needs</li>
+            <li>Experience supporting government-style requirements (RFI/Sources Sought workflows)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Codes & Compliance (fill in)</h3>
+          <p style="color:var(--muted);margin-top:8px;">
+            Add your exact NAICS/PSC codes here (and any licenses/insurance). If you want, paste your current list and I'll format it perfectly.
+          </p>
+          <div class="pill-row" aria-label="Sample codes">
+            <span class="pill">NAICS: 492110 (example)</span>
+            <span class="pill">NAICS: 561210 (example)</span>
+            <span class="pill">PSC: R499 (example)</span>
+            <span class="pill">PSC: V999 (example)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAST PERFORMANCE -->
+  <section id="past-performance" class="section">
+    <div class="container">
+      <div class="kicker">Performance</div>
+      <h2>Past Performance Highlights</h2>
+      <p class="lead">
+        Use short, contract-style bullets. If you share 3–5 examples, I'll rewrite them in strong CPARS-friendly language.
+      </p>
+
+      <div class="grid pp" style="margin-top:18px;">
+        <div class="card">
+          <h3>Delivery Support (Example)</h3>
+          <p>Coordinated scheduled and on-demand deliveries with documented proof-of-delivery and status updates.</p>
+        </div>
+        <div class="card">
+          <h3>Operations Support (Example)</h3>
+          <p>Provided reliable staffing support and daily reporting for operational continuity and compliance tracking.</p>
+        </div>
+        <div class="card">
+          <h3>Medical Courier (Example)</h3>
+          <p>Managed time-sensitive transport with careful handling and chain-of-custody documentation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="kicker">Contact</div>
+      <h2>Contact IINTEKKU Group</h2>
+      <p class="lead">Send a message and we'll respond with next steps, capability info, or a quote request checklist.</p>
+
+      <div class="two-col" style="margin-top:18px;">
+        <div class="card">
+          <h3>Company Info</h3>
+          <p style="color:var(--muted);margin-top:10px;">
+            Address: 15002 Dosan-daero, Bundang-gu, Seongnam-si, Gyeonggi-do, South Korea<br/>
+            Email: <a href="mailto:info@iintekkugroup.org">info@iintekkugroup.org</a><br/>
+            Phone: +82-12-3456-7890
+          </p>
+
+          <div class="pill-row" style="margin-top:14px;">
+            <span class="pill">Hours: Mon–Fri</span>
+            <span class="pill">Fast Response</span>
+            <span class="pill">Gov & Commercial</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Send a Message</h3>
+          <!-- This form is static. To make it functional, connect Formspree, Netlify Forms, or a backend. -->
+          <form onsubmit="return handleSubmit(event)">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <input type="text" name="subject" placeholder="Subject (e.g., Delivery Support Quote)" />
+            <textarea name="message" placeholder="Tell us what you need (location, dates, volume, special handling, compliance requirements)..." required></textarea>
+            <button class="btn primary" type="submit">Send Message</button>
+            <p id="formStatus" style="color:var(--muted);font-size:.95rem;"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> IINTEKKU Group. All rights reserved.</p>
+      <p style="margin-top:8px;">Built for mission support: management, logistics, medical courier, and operational services.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for in-page anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if(!id || id === '#') return;
+        const target = document.querySelector(id);
+        if(!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Demo form handler (static)
+    function handleSubmit(e){
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      status.textContent = "Thanks! This demo form isn't connected yet. Connect Formspree/Netlify or a backend to receive submissions.";
+      return false;
+    }
+  </script>
+</body>
+</html>
