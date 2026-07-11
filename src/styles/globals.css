@@ -10,6 +10,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -36,6 +37,59 @@ button {
   @apply transition-all duration-300 ease-out;
 }
 
+/* Hero animations */
+.animate-fade-in-delay-1 {
+  animation: fade-in 0.5s ease-out;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fade-in 0.5s ease-out 0.1s backwards;
+}
+
+.animate-fade-in-delay-3 {
+  animation: fade-in 0.5s ease-out 0.2s backwards;
+}
+
+/* Glow effects */
+.glow-primary {
+  @apply shadow-glow;
+}
+
+.glow-primary-lg {
+  @apply shadow-glow-lg;
+}
+
+.glow-primary-xl {
+  @apply shadow-glow-xl;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r bg-clip-text text-transparent;
+}
+
+/* Enhanced card hover */
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-xl hover:scale-105;
+}
+
+/* Pulse animation */
+.animate-pulse-custom {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Floating animation */
+.animate-floating {
+  @apply animate-float;
+}
+
+/* Shimmer effect */
+.shimmer-effect {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200% 100%;
+  @apply animate-shimmer;
+}
+
 /* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -52,5 +106,12 @@ button {
   button,
   nav {
     @apply hidden;
+  }
+}
+
+/* Responsive enhancements */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 64px;
   }
 }
