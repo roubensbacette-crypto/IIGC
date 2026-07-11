@@ -39,15 +39,15 @@ button {
 
 /* Hero animations */
 .animate-fade-in-delay-1 {
-  animation: fade-in 0.5s ease-out;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .animate-fade-in-delay-2 {
-  animation: fade-in 0.5s ease-out 0.1s backwards;
+  animation: fadeIn 0.5s ease-out 0.1s backwards;
 }
 
 .animate-fade-in-delay-3 {
-  animation: fade-in 0.5s ease-out 0.2s backwards;
+  animation: fadeIn 0.5s ease-out 0.2s backwards;
 }
 
 /* Glow effects */
@@ -65,7 +65,7 @@ button {
 
 /* Gradient text */
 .gradient-text {
-  @apply bg-gradient-to-r bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
 }
 
 /* Enhanced card hover */
@@ -88,6 +88,16 @@ button {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
   background-size: 200% 100%;
   @apply animate-shimmer;
+}
+
+/* Pulse glow effect */
+.pulse-glow {
+  @apply animate-pulse-glow;
+}
+
+/* Bounce slow effect */
+.bounce-slow {
+  @apply animate-bounce-slow;
 }
 
 /* Accessibility improvements */
